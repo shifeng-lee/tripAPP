@@ -1,18 +1,41 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <van-nav-bar
+            title="标题"
+            left-text="返回"
+            right-text="按钮"
+            left-arrow
+            @click-left="onClickLeft"
+            @click-right="onClickRight"
+    />
+    <van-tabs v-model="active">
+      <van-tab title="标签 1">内容 1</van-tab>
+      <van-tab title="标签 2">内容 2</van-tab>
+      <van-tab title="标签 3">内容 3</van-tab>
+      <van-tab title="标签 4">内容 4</van-tab>
+    </van-tabs>
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import Vue from "vue";
+import { Tab, Tabs, NavBar } from "vant";
+import { Toast } from 'vant';
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(NavBar);
 export default {
-  name: "home",
-  components: {
-    HelloWorld
+  data() {
+    return {
+      active: 2
+    };
+  },
+  methods: {
+    onClickLeft() {
+      Toast('返回');
+    },
+    onClickRight() {
+      Toast('按钮');
+    }
   }
 };
 </script>
